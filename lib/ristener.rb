@@ -1,5 +1,11 @@
-require "ristener/version"
+require 'ristener/version'
 
+#
+#
+# @author autopp <autopp.inc@gmail.com>
+#
 module Ristener
-  # Your code goes here...
 end
+
+require 'ristener/server'
+require 'ristener/client'
