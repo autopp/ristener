@@ -1,3 +1,0 @@
-require 'ristener'
-
-Ristener::Client.new.run(ARGV[0])

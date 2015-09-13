@@ -1,0 +1,3 @@
+require 'ristener'
+
+Ristener::CLI.start(ARGV)
