@@ -11,3 +11,4 @@ end
 require 'ristener/ristener_error'
 require 'ristener/server'
 require 'ristener/client'
+require 'ristener/cli'
