@@ -9,11 +9,17 @@ module Ristener
         @at_top_level = true
       end
 
+      private
+
+      def set(name, value)
+        Server.conf[name] = value
+      end
+
       def listen(command, &block)
         fail RistenerError, "cannot invoke `listen' except at top level." unless @at_top_level
         fail RistenerError, 'invalid command name' unless command =~ /[a-zA-Z_-]+/
 
-        Router.add_route("/#{command}") do
+        Router.add_route("#{command}") do
           @at_top_level = false
           block.call
         end
