@@ -7,11 +7,20 @@ module Ristener
   # @author autopp <autopp.inc@gmail.com>
   #
   class Client
-    DEFAULT_HOSTNAME = 'localhost'
-    def run(command, hostname = DEFAULT_HOSTNAME, port = DEFAULT_PORT)
+    def run(command, hostname, port)
       uri = URI.parse("http://#{hostname}:#{port}/#{command}")
       res = Net::HTTP.get_response(uri)
-      p res unless res.success?
+
+      case res
+      when Net::HTTPSuccess
+        true
+      when Net::HTTPNotFound
+        $stderr.puts res.body
+        false
+      else
+        $stderr.puts res.inspect
+        false
+      end
     end
   end
 end

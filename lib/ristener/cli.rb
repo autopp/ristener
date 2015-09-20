@@ -16,7 +16,9 @@ module Ristener
     option :port, aliases: :p, type: :numeric, default: DEFAULT_PORT
     desc 'client COMMAND', 'Run as client mode'
     def client(command)
-      Client.new.run(command, options[:host], options[:port])
+      res = Client.new.run(command, options[:host], options[:port])
+
+      exit(res ? 0 : 1)
     end
   end
 end
