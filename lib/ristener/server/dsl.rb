@@ -11,8 +11,8 @@ module Ristener
 
       private
 
-      def set(name, value)
-        Server.conf[name] = value
+      def bind(addr)
+        Router.bind(addr)
       end
 
       def listen(command, &block)

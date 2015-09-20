@@ -29,6 +29,8 @@ module Ristener
 
         Router.port = DEFAULT_PORT
         $stderr = @stderr_mock
+
+        puts "Start as server mode by #{script_path}"
         Router.run! do |server|
           case server
           when WEBrick::HTTPServer

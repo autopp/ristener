@@ -26,6 +26,10 @@ module Ristener
             'Success'
           end
         end
+
+        def bind(addr)
+          set :bind, addr
+        end
       end
     end
   end
