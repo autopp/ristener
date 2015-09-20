@@ -15,7 +15,7 @@ module Ristener
       when Net::HTTPSuccess
         true
       when Net::HTTPNotFound
-        $stderr.puts res.body
+        $stderr.puts "unknown command `#{command}'"
         false
       else
         $stderr.puts res.inspect
