@@ -7,13 +7,23 @@ module Ristener
     # @author autopp <autopp.inc@gmail.com>
     #
     class Router < Sinatra::Base
+      not_found do
+        puts 'Not found'
+        'Not found!!'
+      end
+
+      set :logging, false
+
       class << self
         public :run!
 
         def add_route(name, &block)
           get("/#{name}") do
+            $stderr = Server.stderr_orig
             block.call
-            'ok'
+            $stderr = Server.stderr_mock
+            $stderr.truncate(0)
+            'Success'
           end
         end
       end
